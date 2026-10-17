@@ -137,12 +137,14 @@ h1, h2, h3, h4 {
 .text-stylish-gold {
   background: linear-gradient(135deg, #FFF2B2 0%, #E2A63B 50%, #B87C28 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-stylish-blue {
   background: linear-gradient(135deg, #E0F2FE 0%, #38BDF8 50%, #0A78B8 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
