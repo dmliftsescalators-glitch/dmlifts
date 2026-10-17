@@ -105,12 +105,12 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-3 mb-4"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B87C28]/10 border border-[#B87C28]/25 mb-4"
             >
-              <span className="text-xs sm:text-sm font-bold tracking-[0.28em] uppercase text-[#B87C28] font-mono">
-                ABOUT US
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B87C28] shadow-[0_0_8px_#B87C28]" />
+              <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider text-[#B87C28]">
+                About DM Elevators
               </span>
-              <div className="w-10 sm:w-14 h-[2px] bg-[#D49A3D] rounded-full" />
             </motion.div>
 
             {/* Editorial Serif Display Headline */}
@@ -247,11 +247,11 @@ export default function About() {
           <div className="max-w-3xl mb-5 sm:mb-12 relative z-10">
             
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-3 mb-3">
-              <span className="text-xs sm:text-sm font-bold tracking-[0.28em] uppercase text-[#B87C28] font-mono">
-                OUR APPROACH
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B87C28]/10 border border-[#B87C28]/25 mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B87C28] shadow-[0_0_8px_#B87C28]" />
+              <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider text-[#B87C28]">
+                Our Approach &amp; Engineering
               </span>
-              <div className="w-8 sm:w-12 h-[2px] bg-[#D49A3D] rounded-full" />
             </div>
 
             {/* Approach Headline */}

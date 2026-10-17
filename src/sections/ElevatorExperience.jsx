@@ -34,10 +34,10 @@ export default function ElevatorExperience() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Eyebrow */}
-        <div className="flex items-center gap-2.5 mb-4">
-          <span className="w-2 h-2 rounded-xs bg-[#FF6A00]" />
-          <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#FF6A00] font-semibold">
-            Ride Quality & Comfort
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6A00]/10 border border-[#FF6A00]/25 mb-4">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shadow-[0_0_8px_#FF6A00]" />
+          <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#FF6A00]">
+            Ride Quality &amp; Comfort
           </span>
         </div>
 

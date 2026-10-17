@@ -75,12 +75,12 @@ export default function ElevatorHero({ onExplore }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-3 mb-4"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B87C28]/10 border border-[#B87C28]/25 mb-4"
             >
-              <span className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-[#B87C28] font-mono">
-                VERTICAL MOBILITY SYSTEMS
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B87C28] shadow-[0_0_8px_#B87C28]" />
+              <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider text-[#B87C28]">
+                Vertical Mobility Systems
               </span>
-              <div className="w-10 sm:w-14 h-[2px] bg-[#D49A3D] rounded-full" />
             </motion.div>
 
             {/* 2. Headline: Bold Stately Luxury Roman ELEVATORS */}

@@ -68,13 +68,12 @@ export default function EscalatorHero({ onExplore }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-3 mb-4"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6A00]/10 border border-[#FF6A00]/25 mb-4"
             >
-              <span className="w-2 h-2 rounded-full bg-[#FF6A00] shadow-[0_0_10px_#FF6A00]" />
-              <span className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-[#FF6A00] font-mono">
-                CONTINUOUS TRANSIT MOBILITY
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shadow-[0_0_8px_#FF6A00]" />
+              <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider text-[#FF6A00]">
+                Continuous Transit Mobility
               </span>
-              <div className="w-12 h-[2px] bg-[#075A8F]/60 rounded-full" />
             </motion.div>
 
             {/* 2. Headline: Bold Stately Display ESCALATORS */}

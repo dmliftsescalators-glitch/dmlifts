@@ -118,14 +118,14 @@ export default function Escalators() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16 pb-8 border-b border-[#075A8F]/25">
           <div className="max-w-3xl">
             {/* Division Tag */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#0A1B2A] border border-[#075A8F]/50 mb-4 shadow-sm">
-              <span className="w-2 h-2 rounded-xs bg-[#FF6A00] shadow-[0_0_8px_#FF6A00]" />
-              <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#FF6A00] font-bold">
-                PRIMARY PRODUCT DIVISION 02 • CONTINUOUS PASSENGER TRANSIT
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF6A00]/10 border border-[#FF6A00]/25 mb-4 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shadow-[0_0_8px_#FF6A00]" />
+              <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#FF6A00]">
+                Primary Division 02 • Continuous Passenger Transit
               </span>
             </div>
 
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight uppercase leading-tight">
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight uppercase leading-tight">
               ESCALATORS &amp; <span className="text-[#FF6A00]">MOVING WALKWAYS</span>
             </h2>
             <p className="text-sm sm:text-base text-[#C8D1D8] mt-3 leading-relaxed">
@@ -137,7 +137,7 @@ export default function Escalators() {
             <a
               href="#contact"
               onClick={handleContactClick}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#FF6A00] text-white text-xs font-mono tracking-widest uppercase font-bold hover:bg-[#E65500] transition-all shadow-[0_0_20px_rgba(255,106,0,0.35)] cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#FF6A00] text-white text-xs font-sans tracking-wide uppercase font-bold hover:bg-[#E65500] transition-all shadow-[0_0_20px_rgba(255,106,0,0.35)] cursor-pointer"
             >
               <span>GET IN TOUCH</span>
               <ArrowUpRight className="w-4 h-4" />

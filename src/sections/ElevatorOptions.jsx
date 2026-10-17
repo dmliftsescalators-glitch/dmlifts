@@ -422,10 +422,10 @@ export default function ElevatorOptions() {
         
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-3 sm:mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0A1B2A] border border-[#075A8F]/50 mb-2 sm:mb-4 shadow-sm">
-            <span className="w-2 h-2 rounded-xs bg-[#FF6A00] shadow-[0_0_8px_#FF6A00]" />
-            <span className="text-[11px] sm:text-xs font-mono tracking-[0.2em] uppercase text-[#FF6A00] font-bold">
-              ELEVATOR CUSTOMIZATION &amp; COMPONENTS
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FF6A00]/10 border border-[#FF6A00]/25 mb-2 sm:mb-4 shadow-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shadow-[0_0_8px_#FF6A00]" />
+            <span className="text-[11px] sm:text-xs font-sans font-semibold uppercase tracking-wider text-[#FF6A00]">
+              Elevator Customization &amp; Components
             </span>
           </div>
 

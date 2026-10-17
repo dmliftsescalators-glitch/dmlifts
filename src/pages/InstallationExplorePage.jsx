@@ -238,12 +238,11 @@ export default function InstallationExplorePage({ onBack, backLabel = 'Back to S
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-3 mb-3">
-              <div className="w-8 h-[2px] bg-[#D49A3D]" />
-              <span className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-[#B87C28] font-sans">
-                OUR INSTALLATION PROCESS
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B87C28]/10 border border-[#B87C28]/25 mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B87C28] shadow-[0_0_8px_#B87C28]" />
+              <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider text-[#B87C28]">
+                Our Installation Process
               </span>
-              <div className="w-8 h-[2px] bg-[#D49A3D]" />
             </div>
 
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#06111C] tracking-tight">

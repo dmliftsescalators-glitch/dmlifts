@@ -49,7 +49,7 @@ export default function Footer() {
 
           {/* NAVIGATION LINKS COLUMN (3 cols) */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-white font-semibold mb-4">
+            <h4 className="text-xs font-sans uppercase tracking-wider text-white font-semibold mb-4">
               Navigation
             </h4>
             <div className="grid grid-cols-2 gap-2 text-xs">
@@ -67,7 +67,7 @@ export default function Footer() {
 
           {/* CONTACT INFO (4 cols) */}
           <div className="lg:col-span-4 space-y-3.5 text-xs">
-            <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-white font-semibold mb-4">
+            <h4 className="text-xs font-sans uppercase tracking-wider text-white font-semibold mb-4">
               Direct Contact
             </h4>
             <div className="flex items-center gap-2.5">

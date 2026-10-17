@@ -154,10 +154,10 @@ export default function ServicesPage({ onBack, onNavigate }) {
         <div className="absolute bottom-0 left-10 w-[450px] h-[450px] bg-[#FF6A00]/10 rounded-full blur-[170px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center sm:text-left">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FF6A00] shadow-[0_0_10px_#FF6A00]" />
-            <span className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-[#FF6A00] font-mono">
-              ENGINEERED MOBILITY &amp; LIFECYCLE DIVISIONS
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF6A00]/10 border border-[#FF6A00]/25 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shadow-[0_0_8px_#FF6A00]" />
+            <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider text-[#FF6A00]">
+              Engineered Mobility &amp; Lifecycle Divisions
             </span>
           </div>
 

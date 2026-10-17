@@ -153,22 +153,25 @@ export default function Solutions() {
         >
           <div>
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-3 mb-2.5 sm:mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#FF6A00] shadow-[0_0_10px_#FF6A00]" />
-              <span className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-[#FF6A00] font-mono">
-                OUR SOLUTIONS &amp; SPECIFICATIONS
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6A00]/10 border border-[#FF6A00]/25 mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF6A00] shadow-[0_0_8px_#FF6A00]" />
+              <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider text-[#FF6A00]">
+                Our Solutions &amp; Specifications
               </span>
-              <div className="w-12 h-[2px] bg-[#075A8F]/60 rounded-full" />
             </div>
 
             {/* Main Headline */}
-            <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white uppercase leading-none">
+            <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white uppercase leading-none">
               ELEVATORS <span className="text-[#0A78B8] font-light">&</span> <span className="text-[#FF6A00]">ESCALATORS</span>
             </h2>
 
-            {/* Specifications sub-lettering */}
-            <p className="text-xs sm:text-sm font-mono tracking-[0.35em] uppercase text-[#C8D1D8]/80 mt-1.5 sm:mt-2 font-medium">
-              S P E C I F I C A T I O N S
+            {/* Sub-text */}
+            <p className="text-sm font-sans text-[#C8D1D8]/80 mt-2 font-medium tracking-normal flex items-center gap-2">
+              <span>Architectural Elevators</span>
+              <span className="text-[#FF6A00]">•</span>
+              <span>Commercial Escalators</span>
+              <span className="text-[#0A78B8]">•</span>
+              <span>Custom Cabins</span>
             </p>
           </div>
 

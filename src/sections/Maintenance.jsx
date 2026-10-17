@@ -445,20 +445,23 @@ export default function Maintenance() {
         {/* ========================================================= */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 pb-8 border-b border-[#EAE3D2]">
           <div>
-            <div className="inline-flex items-center gap-3 mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#B87C28] shadow-[0_0_10px_#B87C28]" />
-              <span className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-[#B87C28] font-mono">
-                MAINTENANCE &amp; AMC
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B87C28]/10 border border-[#B87C28]/25 mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B87C28] shadow-[0_0_8px_#B87C28]" />
+              <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider text-[#B87C28]">
+                Maintenance &amp; AMC
               </span>
-              <div className="w-10 sm:w-14 h-[2px] bg-[#D49A3D] rounded-full" />
             </div>
 
-            <h2 className="font-luxury text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#06111C] uppercase leading-tight">
-              KEEPING YOUR VERTICAL <span className="text-[#B87C28] font-luxury">MOBILITY MOVING.</span>
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#06111C] uppercase leading-tight">
+              KEEPING YOUR VERTICAL <span className="text-[#B87C28]">MOBILITY MOVING.</span>
             </h2>
 
-            <p className="text-xs sm:text-sm font-mono tracking-[0.35em] uppercase text-[#A86E18] mt-2 font-semibold">
-              L I F E C Y C L E &nbsp; C A R E &nbsp; &amp; &nbsp; S E R V I C I N G
+            <p className="text-sm sm:text-base font-sans text-[#78613D] font-medium tracking-normal mt-2 flex items-center gap-2">
+              <span>Lifecycle Care</span>
+              <span className="text-[#D49A3D]">•</span>
+              <span>Preventive Servicing</span>
+              <span className="text-[#D49A3D]">•</span>
+              <span>24/7 Rapid Response</span>
             </p>
           </div>
 
@@ -492,10 +495,10 @@ export default function Maintenance() {
                   <Building2 className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-[#B87C28] font-bold block">
+                  <span className="text-[11px] font-sans tracking-wide uppercase text-[#B87C28] font-bold block">
                     DIVISION 01
                   </span>
-                  <h3 className="font-display text-base sm:text-lg font-bold text-[#06111C] uppercase tracking-tight">
+                  <h3 className="font-heading text-base sm:text-lg font-bold text-[#06111C] uppercase tracking-tight">
                     Elevator Maintenance
                   </h3>
                 </div>
@@ -525,10 +528,10 @@ export default function Maintenance() {
                   <TrendingUp className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-[#B87C28] font-bold block">
+                  <span className="text-[11px] font-sans tracking-wide uppercase text-[#B87C28] font-bold block">
                     DIVISION 02
                   </span>
-                  <h3 className="font-display text-base sm:text-lg font-bold text-[#06111C] uppercase tracking-tight">
+                  <h3 className="font-heading text-base sm:text-lg font-bold text-[#06111C] uppercase tracking-tight">
                     Escalator Maintenance
                   </h3>
                 </div>
@@ -798,7 +801,7 @@ export default function Maintenance() {
                         </div>
                         {/* Gold Swoop Bar */}
                         <div className="h-[2px] w-24 sm:w-28 bg-gradient-to-r from-transparent via-[#FDE68A] to-transparent my-1" />
-                        <span className="text-[9.5px] sm:text-[10px] lg:text-[11px] font-luxury uppercase tracking-[0.32em] sm:tracking-[0.38em] text-[#E2E8F0] font-bold">
+                        <span className="text-[10px] sm:text-[11px] font-luxury uppercase tracking-widest text-[#E2E8F0] font-bold">
                           LIFTS &amp; ESCALATORS
                         </span>
                       </div>

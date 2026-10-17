@@ -137,11 +137,11 @@ export default function Services() {
           className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 sm:gap-6 mb-4 pb-3 sm:mb-12 sm:pb-8 border-b border-[#E2E8F0]"
         >
           <div>
-            <div className="inline-flex items-center gap-3 mb-2 sm:mb-4">
-              <span className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-[#B87C28] font-sans">
-                CORE DIVISIONS
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B87C28]/10 border border-[#B87C28]/25 mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B87C28] shadow-[0_0_8px_#B87C28]" />
+              <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider text-[#B87C28]">
+                Core Divisions &amp; Capabilities
               </span>
-              <div className="w-10 sm:w-14 h-[2px] bg-[#D49A3D] rounded-full" />
             </div>
 
             <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#06111C] uppercase leading-none">
