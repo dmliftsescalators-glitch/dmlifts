@@ -2,9 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
-import MaskedHeading from './MaskedHeading';
 import PillButton from './PillButton';
-import FoldText from './FoldText';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +11,7 @@ export default function Hero() {
   const heroContentRef = useRef(null);
   const videoWrapperRef = useRef(null);
   const videoRef = useRef(null);
+  const headingRef = useRef(null);
   const subheadRef = useRef(null);
   const buttonsRef = useRef(null);
 
@@ -45,11 +44,19 @@ export default function Hero() {
         );
       }
 
+      // Main Heading
+      loadTl.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+        0.25
+      );
+
       // Subhead
       loadTl.fromTo(
         subheadRef.current,
         { opacity: 0, y: 18 },
-        { opacity: 1, y: 0, duration: 0.6 },
+        { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
         0.5
       );
 
@@ -57,7 +64,7 @@ export default function Hero() {
       loadTl.fromTo(
         buttonsRef.current,
         { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.5 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
         0.7
       );
 
@@ -135,79 +142,40 @@ export default function Hero() {
       <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#06111C] via-[#06111C]/60 to-transparent pointer-events-none z-10" />
 
       {/* Soft feather shadow behind text area only (keeps 85%+ of video totally clear) */}
-      <div className="absolute inset-y-0 left-0 w-full lg:w-3/5 bg-gradient-to-r from-black/75 via-black/40 to-transparent pointer-events-none z-10" />
+      <div className="absolute inset-y-0 left-0 w-full lg:w-3/5 bg-gradient-to-r from-black/80 via-black/45 to-transparent pointer-events-none z-10" />
 
       {/* ========================================================= */}
-      {/* 3. HERO CONTENT & BALANCED TYPOGRAPHY                     */}
+      {/* 3. HERO CONTENT & BALANCED ARCHITECTURAL TYPOGRAPHY        */}
       {/* ========================================================= */}
       <div className="relative z-20 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 lg:py-20">
         <div
           ref={heroContentRef}
-          className="max-w-2xl flex flex-col justify-center"
+          className="max-w-3xl flex flex-col justify-center"
         >
-          {/* DYNAMIC MASKED HEADING WITH RISE TRANSITION & VIDEO-THROUGH-LETTERS */}
-          <div className="mb-6">
-            <MaskedHeading
-              tag="h1"
-              text="Elevating Spaces"
-              align="left"
-              mediaType="video"
-              src="/videos/heromain.mp4"
-              fillScale={1.5}
-              parallax={28}
-              drift={14}
-              brightness={1.3}
-              saturation={1.4}
-              reveal="rise"
-              trigger="view"
-              duration={1.2}
-              stagger={0.08}
-              weight={900}
-              tracking={-0.02}
-              textScale={0.115}
-              className="font-display uppercase tracking-tight drop-shadow-[0_6px_28px_rgba(0,0,0,0.95)]"
-            />
-            <div className="mt-1">
-              <MaskedHeading
-                tag="h2"
-                text="Defining Experiences"
-                align="left"
-                mediaType="video"
-                src="/videos/heromain.mp4"
-                fillScale={1.5}
-                parallax={28}
-                drift={14}
-                brightness={1.35}
-                saturation={1.45}
-                reveal="rise"
-                trigger="view"
-                duration={1.3}
-                stagger={0.08}
-                weight={900}
-                tracking={-0.02}
-                textScale={0.115}
-                className="font-display uppercase tracking-tight drop-shadow-[0_6px_28px_rgba(0,0,0,0.95)]"
-              />
+          {/* ARCHITECTURAL HERO HEADLINE */}
+          <div ref={headingRef} className="mb-5 sm:mb-6">
+            {/* Eyebrow badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-3 sm:mb-4 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#FF6A00] animate-pulse shadow-[0_0_8px_#FF6A00]" />
+              <span className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-white/95">
+                Precision Engineering &amp; Vertical Mobility
+              </span>
             </div>
+
+            <h1 className="font-display font-extrabold uppercase tracking-tight text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.08] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)] break-words">
+              <span className="block">Elevating Spaces.</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#FFF2B2] via-[#E2A63B] to-[#B87C28] drop-shadow-sm">
+                Defining Experiences.
+              </span>
+            </h1>
           </div>
 
           {/* SUPPORTING TEXT */}
           <p
             ref={subheadRef}
-            className="text-base sm:text-lg md:text-xl text-[#F0F4F8] font-normal leading-relaxed mb-5 sm:mb-8 max-w-xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
+            className="text-base sm:text-lg md:text-xl text-[#F0F4F8] font-normal leading-relaxed mb-6 sm:mb-8 max-w-xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
           >
-            <FoldText
-              text="Advanced elevator and escalator solutions engineered for whisper-quiet transit, architectural distinction, and uncompromising safety."
-              splitBy="word"
-              hinge="top"
-              trigger="mount"
-              duration={0.6}
-              stagger={0.035}
-              ease="power3.out"
-              perspective={800}
-              creaseShading={0.45}
-              color="#F0F4F8"
-            />
+            Advanced elevator and escalator solutions engineered for whisper-quiet transit, architectural distinction, and uncompromising safety.
           </p>
 
           {/* ACTION BUTTONS (REACT BITS PILL ANIMATION) */}
