@@ -150,7 +150,7 @@ export default function Hero() {
       <div className="relative z-20 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 lg:py-20">
         <div
           ref={heroContentRef}
-          className="max-w-3xl flex flex-col justify-center"
+          className="max-w-4xl flex flex-col justify-center"
         >
           {/* ARCHITECTURAL HERO HEADLINE */}
           <div ref={headingRef} className="mb-5 sm:mb-6">
@@ -162,10 +162,14 @@ export default function Hero() {
               </span>
             </div>
 
-            <h1 className="font-display font-extrabold uppercase tracking-tight text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.08] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)] break-words">
-              <span className="block">Elevating Spaces.</span>
+            <h1 className="font-display font-extrabold uppercase tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.25rem] leading-[1.08] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)] break-normal">
+              <span className="block">
+                <span className="inline-block whitespace-nowrap">Elevating</span>{' '}
+                <span className="inline-block whitespace-nowrap">Spaces.</span>
+              </span>
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#FFF2B2] via-[#E2A63B] to-[#B87C28] drop-shadow-sm">
-                Defining Experiences.
+                <span className="inline-block whitespace-nowrap">Defining</span>{' '}
+                <span className="inline-block whitespace-nowrap">Experiences.</span>
               </span>
             </h1>
           </div>
