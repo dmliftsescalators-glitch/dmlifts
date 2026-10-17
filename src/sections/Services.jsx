@@ -98,12 +98,12 @@ export default function Services() {
 
   const getFlexValue = (isExpanded) => {
     if (isMobile) {
-      return isExpanded ? 2.7 : 0.65;
+      return isExpanded ? 3.0 : 0.6;
     }
     if (isTablet) {
-      return isExpanded ? 2.3 : 0.85;
+      return isExpanded ? 3.2 : 0.7;
     }
-    return isExpanded ? 2.1 : 0.95;
+    return isExpanded ? 3.4 : 0.7;
   };
 
   return (
@@ -221,7 +221,7 @@ export default function Services() {
 
                   {/* Bottom: Title, Subtitle, CTA */}
                   <div className="relative z-10 pt-4">
-                    <h3 className="font-display font-extrabold uppercase text-xl text-white mb-1.5 leading-tight tracking-tight">
+                    <h3 className="font-display font-bold uppercase text-lg sm:text-xl text-white mb-1.5 leading-tight tracking-tight break-words">
                       {service.title}
                     </h3>
                     <p className="text-xs text-[#E2E8F0] mb-3 leading-relaxed font-normal line-clamp-2">
@@ -233,7 +233,7 @@ export default function Services() {
                         e.stopPropagation();
                         handleNavigate(service.exploreHash);
                       }}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full font-bold text-[11px] uppercase tracking-wider bg-[#D49A3D] text-white shadow-[0_0_20px_rgba(212,154,61,0.5)] active:scale-95 cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-bold text-[11px] uppercase tracking-wider bg-[#D49A3D] text-white shadow-[0_0_20px_rgba(212,154,61,0.5)] active:scale-95 cursor-pointer"
                     >
                       <span>{service.buttonText}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -300,15 +300,15 @@ export default function Services() {
                       </span>
                     </div>
 
-                    <div className="relative z-10 flex flex-col justify-end pt-4 sm:pt-10">
+                    <div className="relative z-10 flex flex-col justify-end pt-4 sm:pt-6">
                       <h3 
-                        className="font-display font-extrabold uppercase transition-all duration-300 text-lg sm:text-2xl md:text-3xl xl:text-3xl 2xl:text-4xl text-white mb-1 sm:mb-2 leading-tight tracking-tight line-clamp-2"
+                        className="font-display font-bold uppercase transition-all duration-300 text-lg sm:text-xl md:text-2xl lg:text-3xl text-white mb-1.5 sm:mb-2 leading-tight tracking-tight break-words"
                         title={service.title}
                       >
                         {service.title}
                       </h3>
 
-                      <p className="text-[11px] sm:text-xs md:text-sm text-[#E2E8F0] mb-3 sm:mb-4 lg:mb-5 leading-snug sm:leading-relaxed font-normal opacity-100 line-clamp-2">
+                      <p className="text-xs sm:text-[13px] md:text-sm text-[#E2E8F0] mb-3 sm:mb-4 lg:mb-5 leading-relaxed font-normal opacity-100 line-clamp-2 max-w-xl">
                         {service.subtitle}
                       </p>
 
@@ -319,10 +319,10 @@ export default function Services() {
                             e.stopPropagation();
                             handleNavigate(service.exploreHash);
                           }}
-                          className="inline-flex items-center justify-between gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 md:py-3 rounded-full font-bold text-[10px] sm:text-xs uppercase tracking-wider transition-all duration-300 shadow-md cursor-pointer whitespace-nowrap bg-[#D49A3D] text-white shadow-[0_0_25px_rgba(212,154,61,0.5)] hover:bg-[#B87C28] hover:scale-[1.02]"
+                          className="inline-flex items-center justify-between gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold text-[11px] sm:text-xs uppercase tracking-wider transition-all duration-300 shadow-md cursor-pointer whitespace-nowrap bg-[#D49A3D] text-white shadow-[0_0_25px_rgba(212,154,61,0.5)] hover:bg-[#B87C28] hover:scale-[1.02]"
                         >
-                          <span className="truncate max-w-[130px] sm:max-w-none">{service.buttonText}</span>
-                          <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform group-hover:translate-x-1 shrink-0" />
+                          <span>{service.buttonText}</span>
+                          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 shrink-0" />
                         </button>
                       </div>
                     </div>
@@ -339,22 +339,21 @@ export default function Services() {
                       </span>
                     </div>
 
-                    <div className="relative z-10 flex flex-col justify-end pt-6 sm:pt-8">
+                    <div className="relative z-10 flex flex-col justify-end pt-4 sm:pt-6">
                       <h3 
-                        className="font-display font-extrabold uppercase text-xs sm:text-xs md:text-sm xl:text-[13.5px] 2xl:text-[15px] text-white/95 mb-2 leading-tight tracking-wider truncate"
+                        className="font-display font-bold uppercase text-[11px] sm:text-xs md:text-[13px] text-white/90 mb-2.5 leading-tight tracking-tight break-words line-clamp-2"
                         title={service.title}
                       >
                         {service.title}
                       </h3>
 
                       <div>
-                        <button
-                          type="button"
-                          className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#D49A3D] text-white flex items-center justify-center border border-white/20 transition-colors shadow-sm"
+                        <div
+                          className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/10 group-hover:bg-[#D49A3D] text-white flex items-center justify-center border border-white/20 transition-colors shadow-sm"
                           title={`Explore ${service.title}`}
                         >
-                          <ArrowRight className="w-4 h-4 text-white" />
-                        </button>
+                          <ArrowRight className="w-3.5 h-3.5 text-white" />
+                        </div>
                       </div>
                     </div>
                   </>

@@ -231,7 +231,7 @@ export default function ServicesPage({ onBack, onNavigate }) {
                         <span>{service.badge}</span>
                       </div>
 
-                      <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white mb-3">
+                      <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white mb-3 break-words">
                         {service.title}
                       </h2>
 
