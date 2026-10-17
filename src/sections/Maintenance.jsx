@@ -163,15 +163,15 @@ const SERVICES_DATA = {
   ],
 };
 
-// Precise fan stations matching the reference image arc:
-// Cards emerge directly from the folder mouth, touching in a seamless semicircle!
+// Precise fan stations with comfortable spacing:
+// Cards emerge in a seamless, balanced arc without overlapping or overriding each other
 const FAN_STATIONS = [
-  { x: -330, y: -50,  rotate: -25, zIndex: 11 },
-  { x: -200, y: -120, rotate: -15, zIndex: 12 },
-  { x: -68,  y: -158, rotate: -5,  zIndex: 13 },
-  { x: 68,   y: -158, rotate: 5,   zIndex: 13 },
-  { x: 200,  y: -120, rotate: 15,  zIndex: 12 },
-  { x: 330,  y: -50,  rotate: 25,  zIndex: 11 },
+  { x: -480, y: -30,  rotate: -8, zIndex: 11 },
+  { x: -288, y: -75,  rotate: -5, zIndex: 12 },
+  { x: -96,  y: -108, rotate: -2, zIndex: 13 },
+  { x: 96,   y: -108, rotate: 2,  zIndex: 13 },
+  { x: 288,  y: -75,  rotate: 5,  zIndex: 12 },
+  { x: 480,  y: -30,  rotate: 8,  zIndex: 11 },
 ];
 
 export default function Maintenance() {
@@ -295,37 +295,43 @@ export default function Maintenance() {
         bottomOffset: 75,
       };
     } else if (isTablet) {
+      // Dynamic non-overlapping step for tablet
+      const tabletStep = Math.min(134, Math.max(105, Math.floor((windowWidth - 72) / 5.2)));
+      const tabletCardW = Math.min(122, tabletStep - 6);
       return {
-        cardWidth: 152,
-        cardHeight: 260,
+        cardWidth: tabletCardW,
+        cardHeight: 255,
         folderWidth: 420,
         folderHeight: 155,
-        stageHeight: revealedCount > 0 ? 470 : 195,
-        bottomOffset: 135,
+        stageHeight: revealedCount > 0 ? 475 : 195,
+        bottomOffset: 130,
         stations: [
-          { x: -230, y: -45, rotate: -22, zIndex: 11 },
-          { x: -140, y: -95, rotate: -14, zIndex: 12 },
-          { x: -48,  y: -125, rotate: -5,  zIndex: 13 },
-          { x: 48,   y: -125, rotate: 5,   zIndex: 13 },
-          { x: 140,  y: -95, rotate: 14,  zIndex: 12 },
-          { x: 230,  y: -45, rotate: 22,  zIndex: 11 },
+          { x: Math.round(-2.5 * tabletStep), y: -25, rotate: -8, zIndex: 11 },
+          { x: Math.round(-1.5 * tabletStep), y: -60, rotate: -5, zIndex: 12 },
+          { x: Math.round(-0.5 * tabletStep), y: -85, rotate: -2, zIndex: 13 },
+          { x: Math.round(0.5 * tabletStep),  y: -85, rotate: 2,  zIndex: 13 },
+          { x: Math.round(1.5 * tabletStep),  y: -60, rotate: 5,  zIndex: 12 },
+          { x: Math.round(2.5 * tabletStep),  y: -25, rotate: 8,  zIndex: 11 },
         ]
       };
     } else {
+      // Desktop: calculated comfortable spread so cards NEVER overlap or override each other
+      const desktopStep = Math.min(194, Math.max(168, Math.floor((Math.min(1260, windowWidth) - 100) / 5.2)));
+      const desktopCardW = Math.min(170, desktopStep - 20);
       return {
-        cardWidth: 172,
+        cardWidth: desktopCardW,
         cardHeight: 295,
         folderWidth: 460,
         folderHeight: 168,
         stageHeight: revealedCount > 0 ? 590 : 215,
         bottomOffset: 155,
         stations: [
-          { x: -330, y: -50,  rotate: -25, zIndex: 11 },
-          { x: -200, y: -120, rotate: -15, zIndex: 12 },
-          { x: -68,  y: -158, rotate: -5,  zIndex: 13 },
-          { x: 68,   y: -158, rotate: 5,   zIndex: 13 },
-          { x: 200,  y: -120, rotate: 15,  zIndex: 12 },
-          { x: 330,  y: -50,  rotate: 25,  zIndex: 11 },
+          { x: Math.round(-2.5 * desktopStep), y: -30,  rotate: -8, zIndex: 11 },
+          { x: Math.round(-1.5 * desktopStep), y: -75,  rotate: -5, zIndex: 12 },
+          { x: Math.round(-0.5 * desktopStep), y: -108, rotate: -2, zIndex: 13 },
+          { x: Math.round(0.5 * desktopStep),  y: -108, rotate: 2,  zIndex: 13 },
+          { x: Math.round(1.5 * desktopStep),  y: -75,  rotate: 5,  zIndex: 12 },
+          { x: Math.round(2.5 * desktopStep),  y: -30,  rotate: 8,  zIndex: 11 },
         ]
       };
     }
@@ -412,11 +418,11 @@ export default function Maintenance() {
     const isHovered = hoveredIdx === idx;
     return {
       x: station.x,
-      y: isHovered ? station.y - 20 : station.y,
-      rotate: station.rotate,
-      scale: isHovered ? 1.06 : 1,
+      y: isHovered ? station.y - 25 : station.y,
+      rotate: isHovered ? 0 : station.rotate,
+      scale: isHovered ? 1.08 : 1,
       opacity: 1,
-      zIndex: isHovered ? 40 : station.zIndex,
+      zIndex: isHovered ? 50 : station.zIndex,
     };
   };
 
@@ -587,20 +593,20 @@ export default function Maintenance() {
             className="w-full flex justify-center items-end py-2 overflow-hidden"
           >
             <div 
-              className="relative w-full max-w-[420px] sm:max-w-[700px] lg:max-w-[1050px] mx-auto flex justify-center items-end select-none"
+              className="relative w-full max-w-[420px] sm:max-w-[760px] lg:max-w-[1220px] mx-auto flex justify-center items-end select-none"
               style={{ height: cardConfig.stageHeight }}
               onTouchStart={isMobile ? handleTouchStart : undefined}
               onTouchEnd={isMobile ? handleTouchEnd : undefined}
             >
               
               {/* Soft Golden Ambient Backdrop Glow */}
-              <div className={`absolute top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[850px] h-[300px] bg-gradient-to-b from-[#FDE68A]/25 via-[#F59E0B]/10 to-transparent rounded-full blur-[80px] pointer-events-none transition-opacity duration-500 ${
+              <div className={`absolute top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[1100px] h-[300px] bg-gradient-to-b from-[#FDE68A]/25 via-[#F59E0B]/10 to-transparent rounded-full blur-[80px] pointer-events-none transition-opacity duration-500 ${
                 revealedCount > 0 ? 'opacity-100' : 'opacity-0'
               }`} />
 
               {/* Radiant Rainbow Glow Ribbon along the base of cards behind folder */}
               <div 
-                className={`absolute bottom-[105px] sm:bottom-[135px] lg:bottom-[155px] left-1/2 -translate-x-1/2 w-[85%] max-w-[720px] h-12 bg-gradient-to-r from-[#38BDF8] via-[#34D399] via-[#FBBF24] via-[#A78BFA] via-[#F472B6] to-[#FCD34D] rounded-full blur-2xl pointer-events-none transition-opacity duration-700 ${
+                className={`absolute bottom-[105px] sm:bottom-[135px] lg:bottom-[155px] left-1/2 -translate-x-1/2 w-[85%] max-w-[950px] h-12 bg-gradient-to-r from-[#38BDF8] via-[#34D399] via-[#FBBF24] via-[#A78BFA] via-[#F472B6] to-[#FCD34D] rounded-full blur-2xl pointer-events-none transition-opacity duration-700 ${
                   revealedCount > 0 ? 'opacity-70' : 'opacity-0'
                 }`} 
               />
