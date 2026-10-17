@@ -1,0 +1,151 @@
+:root {
+  --folder-color: #d49a3d;
+  --folder-back-color: #b87c28;
+  --paper-1: #ffffff;
+  --paper-2: #f8fafc;
+  --paper-3: #ffffff;
+}
+
+.folder {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+
+.folder:not(.folder--click):hover {
+  transform: translateY(-8px);
+}
+
+.folder:not(.folder--click):hover .paper {
+  transform: translate(-50%, 0%);
+}
+
+.folder:not(.folder--click):hover .folder__front {
+  transform: skew(15deg) scaleY(0.65);
+}
+
+.folder:not(.folder--click):hover .right {
+  transform: skew(-15deg) scaleY(0.65);
+}
+
+.folder.open {
+  transform: translateY(-8px);
+}
+
+.folder.open .paper:nth-child(1) {
+  transform: translate(calc(-108% + var(--magnet-x, 0px)), calc(-48% + var(--magnet-y, 0px))) rotateZ(-7deg);
+  z-index: 4;
+}
+
+.folder.open .paper:nth-child(1):hover {
+  transform: translate(calc(-108% + var(--magnet-x, 0px)), calc(-48% + var(--magnet-y, 0px))) rotateZ(-7deg) scale(1.04);
+  z-index: 25;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+}
+
+.folder.open .paper:nth-child(2) {
+  transform: translate(calc(8% + var(--magnet-x, 0px)), calc(-48% + var(--magnet-y, 0px))) rotateZ(7deg);
+  height: 90%;
+  z-index: 5;
+}
+
+.folder.open .paper:nth-child(2):hover {
+  transform: translate(calc(8% + var(--magnet-x, 0px)), calc(-48% + var(--magnet-y, 0px))) rotateZ(7deg) scale(1.04);
+  height: 90%;
+  z-index: 25;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+}
+
+.folder.open .paper:nth-child(3) {
+  transform: translate(calc(-50% + var(--magnet-x, 0px)), calc(-90% + var(--magnet-y, 0px))) rotateZ(0deg);
+  height: 90%;
+  z-index: 6;
+}
+
+.folder.open .paper:nth-child(3):hover {
+  transform: translate(calc(-50% + var(--magnet-x, 0px)), calc(-90% + var(--magnet-y, 0px))) rotateZ(0deg) scale(1.04);
+  height: 90%;
+  z-index: 25;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+}
+
+.folder.open .folder__front {
+  transform: skew(15deg) scaleY(0.6);
+}
+
+.folder.open .right {
+  transform: skew(-15deg) scaleY(0.6);
+}
+
+.folder__back {
+  position: relative;
+  width: var(--folder-w, 100px);
+  height: var(--folder-h, 80px);
+  background: var(--folder-back-color);
+  border-radius: 0px 14px 14px 14px;
+  box-shadow: 0 12px 30px rgba(184, 124, 40, 0.22);
+}
+
+.folder__back::after {
+  position: absolute;
+  z-index: 0;
+  bottom: 98%;
+  left: 0;
+  content: '';
+  width: calc(var(--folder-w, 100px) * 0.35);
+  height: clamp(10px, calc(var(--folder-h, 80px) * 0.12), 22px);
+  background: var(--folder-back-color);
+  border-radius: 6px 6px 0 0;
+}
+
+.paper {
+  position: absolute;
+  z-index: 2;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%, 6%);
+  width: 90%;
+  height: 90%;
+  background: var(--paper-1);
+  border-radius: 14px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.paper:nth-child(2) {
+  background: var(--paper-2);
+  width: 93%;
+  height: 90%;
+}
+
+.paper:nth-child(3) {
+  background: var(--paper-3);
+  width: 96%;
+  height: 90%;
+}
+
+.folder__front {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: var(--folder-color);
+  border-radius: 6px 14px 14px 14px;
+  transform-origin: bottom;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(184, 124, 40, 0.18);
+  overflow: hidden;
+}
+
+.folder:focus-visible {
+  outline: 2px solid #b87c28;
+  outline-offset: 4px;
+  border-radius: 14px;
+}

@@ -1,0 +1,236 @@
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ArrowRight } from 'lucide-react';
+import MaskedHeading from './MaskedHeading';
+import PillButton from './PillButton';
+import FoldText from './FoldText';
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function Hero() {
+  const containerRef = useRef(null);
+  const heroContentRef = useRef(null);
+  const videoWrapperRef = useRef(null);
+  const videoRef = useRef(null);
+  const subheadRef = useRef(null);
+  const buttonsRef = useRef(null);
+
+  // Guarantee autoplay starts reliably across all browsers
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.play().catch((err) => {
+        console.warn('Autoplay prevented or pending interaction:', err);
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const ctx = gsap.context(() => {
+      // 1. PAGE LOAD CINEMATIC SEQUENCE
+      const loadTl = gsap.timeline({
+        defaults: { ease: 'power2.out' },
+      });
+
+      // Video subtle scale settle
+      if (!motionQuery.matches && videoWrapperRef.current) {
+        loadTl.fromTo(
+          videoWrapperRef.current,
+          { scale: 1.05, opacity: 0.8 },
+          { scale: 1.0, opacity: 1, duration: 1.8, ease: 'power1.out' },
+          0
+        );
+      }
+
+      // Subhead
+      loadTl.fromTo(
+        subheadRef.current,
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.6 },
+        0.5
+      );
+
+      // Buttons
+      loadTl.fromTo(
+        buttonsRef.current,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.5 },
+        0.7
+      );
+
+      // 2. SCROLL ANIMATION (GSAP ScrollTrigger)
+      if (!motionQuery.matches && containerRef.current) {
+        ScrollTrigger.create({
+          trigger: containerRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+          onUpdate: (self) => {
+            const p = self.progress;
+
+            // Smooth parallax on full background video
+            if (videoWrapperRef.current) {
+              gsap.set(videoWrapperRef.current, {
+                y: p * 90,
+              });
+            }
+
+            // Hero text fade and upward drift
+            if (heroContentRef.current) {
+              const textOpacity = Math.max(0, 1 - p * 1.5);
+              const textY = -p * 60;
+              gsap.set(heroContentRef.current, {
+                opacity: textOpacity,
+                y: textY,
+                pointerEvents: textOpacity < 0.1 ? 'none' : 'auto',
+              });
+            }
+          },
+        });
+      }
+    }, containerRef);
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
+  return (
+    <section
+      id="home"
+      ref={containerRef}
+      className="relative min-h-screen w-full flex items-center pt-20 pb-8 sm:pt-24 sm:pb-16 lg:py-0 overflow-hidden"
+    >
+      {/* ========================================================= */}
+      {/* 1. FULL BACKGROUND VIDEO (CLEAR & VIBRANT, NO NAVY TINT)   */}
+      {/* ========================================================= */}
+      <div
+        ref={videoWrapperRef}
+        className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none will-change-transform"
+      >
+        <video
+          ref={videoRef}
+          src="/videos/heromain.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            filter: 'contrast(1.1) brightness(1.05) saturate(1.15)',
+          }}
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
+
+      {/* ========================================================= */}
+      {/* 2. MINIMAL EDGES BLEND (NO GLOBAL NAVY OVERLAY)            */}
+      {/* ========================================================= */}
+      {/* Top subtle fade for navbar readability */}
+      <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-black/60 to-transparent pointer-events-none z-10" />
+
+      {/* Bottom subtle transition into the next section */}
+      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#06111C] via-[#06111C]/60 to-transparent pointer-events-none z-10" />
+
+      {/* Soft feather shadow behind text area only (keeps 85%+ of video totally clear) */}
+      <div className="absolute inset-y-0 left-0 w-full lg:w-3/5 bg-gradient-to-r from-black/75 via-black/40 to-transparent pointer-events-none z-10" />
+
+      {/* ========================================================= */}
+      {/* 3. HERO CONTENT & BALANCED TYPOGRAPHY                     */}
+      {/* ========================================================= */}
+      <div className="relative z-20 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 lg:py-20">
+        <div
+          ref={heroContentRef}
+          className="max-w-2xl flex flex-col justify-center"
+        >
+          {/* DYNAMIC MASKED HEADING WITH RISE TRANSITION & VIDEO-THROUGH-LETTERS */}
+          <div className="mb-6">
+            <MaskedHeading
+              tag="h1"
+              text="Elevating Spaces"
+              align="left"
+              mediaType="video"
+              src="/videos/heromain.mp4"
+              fillScale={1.5}
+              parallax={28}
+              drift={14}
+              brightness={1.3}
+              saturation={1.4}
+              reveal="rise"
+              trigger="view"
+              duration={1.2}
+              stagger={0.08}
+              weight={900}
+              tracking={-0.02}
+              textScale={0.115}
+              className="font-display uppercase tracking-tight drop-shadow-[0_6px_28px_rgba(0,0,0,0.95)]"
+            />
+            <div className="mt-1">
+              <MaskedHeading
+                tag="h2"
+                text="Defining Experiences"
+                align="left"
+                mediaType="video"
+                src="/videos/heromain.mp4"
+                fillScale={1.5}
+                parallax={28}
+                drift={14}
+                brightness={1.35}
+                saturation={1.45}
+                reveal="rise"
+                trigger="view"
+                duration={1.3}
+                stagger={0.08}
+                weight={900}
+                tracking={-0.02}
+                textScale={0.115}
+                className="font-display uppercase tracking-tight drop-shadow-[0_6px_28px_rgba(0,0,0,0.95)]"
+              />
+            </div>
+          </div>
+
+          {/* SUPPORTING TEXT */}
+          <p
+            ref={subheadRef}
+            className="text-base sm:text-lg md:text-xl text-[#F0F4F8] font-normal leading-relaxed mb-5 sm:mb-8 max-w-xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
+          >
+            <FoldText
+              text="Advanced elevator and escalator solutions engineered for whisper-quiet transit, architectural distinction, and uncompromising safety."
+              splitBy="word"
+              hinge="top"
+              trigger="mount"
+              duration={0.6}
+              stagger={0.035}
+              ease="power3.out"
+              perspective={800}
+              creaseShading={0.45}
+              color="#F0F4F8"
+            />
+          </p>
+
+          {/* ACTION BUTTONS (REACT BITS PILL ANIMATION) */}
+          <div
+            ref={buttonsRef}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
+          >
+            {/* Primary Button */}
+            <PillButton
+              href="#services"
+              baseBg="#FF6A00"
+              circleBg="#FFFFFF"
+              textColor="#FFFFFF"
+              hoverTextColor="#06111C"
+              icon={<ArrowRight className="w-4 h-4" />}
+              className="shadow-[0_0_25px_rgba(255,106,0,0.5)] hover:shadow-[0_0_35px_rgba(255,106,0,0.7)]"
+            >
+              EXPLORE SERVICES
+            </PillButton>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
