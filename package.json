@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "description": "DM Elevators & Escalators Fullstack Application",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "scripts": {
+    "build": "npm --prefix frontend install && npm --prefix frontend run build",
     "dev": "npm --prefix frontend run dev",
-    "dev:frontend": "npm --prefix frontend run dev",
     "dev:backend": "npm --prefix backend run dev",
-    "build": "npm --prefix frontend run build",
-    "start": "npm --prefix backend start",
-    "install:all": "npm --prefix frontend install && npm --prefix backend install"
+    "start": "npm --prefix backend start"
   }
 }
