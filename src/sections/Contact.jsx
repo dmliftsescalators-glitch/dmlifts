@@ -65,66 +65,35 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const payload = {
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        phone: formData.phone.trim(),
-        location: formData.location.trim(),
-        requirement: formData.requirement,
-        serviceType: formData.requirement,
-        message: formData.message ? formData.message.trim() : '',
-      };
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '33ed9000-1899-4422-94ec-96df6257e62b';
 
-      let sentViaBackend = false;
-
-      // 1. Try sending to DM Elevators backend API (/api/contact)
-      try {
-        const apiRes = await fetch('/api/contact', {
+      if (accessKey && accessKey.trim() !== '') {
+        const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
           },
-          body: JSON.stringify(payload),
+          body: JSON.stringify({
+            access_key: accessKey,
+            subject: `[New Inquiry] ${formData.requirement} - ${formData.name}`,
+            from_name: 'DM Elevators & Escalators Website',
+            name: formData.name.trim(),
+            email: formData.email.trim(),
+            phone: formData.phone.trim(),
+            location: formData.location.trim(),
+            requirement: formData.requirement,
+            message: formData.message ? formData.message.trim() : 'No additional message provided',
+          }),
         });
 
-        if (apiRes.ok) {
-          const apiData = await apiRes.json();
-          if (apiData.success) {
-            sentViaBackend = true;
-          }
+        const data = await response.json();
+        if (!data.success) {
+          throw new Error(data.message || 'Email delivery failed. Please check your access key.');
         }
-      } catch (backendErr) {
-        console.warn('Backend /api/contact unreachable, falling back to Web3Forms dispatch:', backendErr);
-      }
-
-      // 2. If not sent via backend, use Web3Forms fallback
-      if (!sentViaBackend) {
-        const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '33ed9000-1899-4422-94ec-96df6257e62b';
-
-        if (accessKey && accessKey.trim() !== '') {
-          const response = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json',
-            },
-            body: JSON.stringify({
-              access_key: accessKey,
-              subject: `[New Inquiry] ${formData.requirement} - ${formData.name}`,
-              from_name: 'DM Elevators & Escalators Website',
-              ...payload,
-            }),
-          });
-
-          const data = await response.json();
-          if (!data.success) {
-            throw new Error(data.message || 'Email delivery failed. Please check your access key.');
-          }
-        } else {
-          console.warn('Web3Forms access key not found in .env. Form submission simulated.');
-          await new Promise((resolve) => setTimeout(resolve, 800));
-        }
+      } else {
+        console.warn('Web3Forms access key not found in .env. Form submission simulated.');
+        await new Promise((resolve) => setTimeout(resolve, 800));
       }
 
       setLastSubmittedInfo({
