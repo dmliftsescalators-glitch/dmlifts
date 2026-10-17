@@ -602,63 +602,7 @@ export default function Maintenance() {
                 }`} 
               />
 
-              {/* ----------------------------------------------------------- */}
-              {/* MOBILE NAVIGATION CHEVRONS                                  */}
-              {/* ----------------------------------------------------------- */}
-              {isMobile && revealedCount > 0 && (
-                <>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handlePrevMobileCard();
-                    }}
-                    aria-label="Previous service"
-                    className="absolute left-1 top-[36%] -translate-y-1/2 z-35 w-9 h-9 rounded-full bg-white/95 backdrop-blur-md border border-[#D49A3D]/40 text-[#B87C28] shadow-[0_4px_14px_rgba(0,0,0,0.18)] flex items-center justify-center active:scale-90 transition-transform cursor-pointer"
-                  >
-                    <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleNextMobileCard();
-                    }}
-                    aria-label="Next service"
-                    className="absolute right-1 top-[36%] -translate-y-1/2 z-35 w-9 h-9 rounded-full bg-white/95 backdrop-blur-md border border-[#D49A3D]/40 text-[#B87C28] shadow-[0_4px_14px_rgba(0,0,0,0.18)] flex items-center justify-center active:scale-90 transition-transform cursor-pointer"
-                  >
-                    <ChevronRight className="w-5 h-5 stroke-[2.5]" />
-                  </button>
-                </>
-              )}
 
-              {/* ----------------------------------------------------------- */}
-              {/* MOBILE PAGINATION DOTS PILL                                 */}
-              {/* ----------------------------------------------------------- */}
-              {isMobile && revealedCount > 0 && (
-                <div className="absolute bottom-[136px] left-1/2 -translate-x-1/2 z-35 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm border border-[#E2E8F0] shadow-sm">
-                  {currentServices.map((svc, i) => {
-                    const isActive = activeMobileIdx === i;
-                    return (
-                      <button
-                        key={svc.id}
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setActiveMobileIdx(i);
-                        }}
-                        className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                          isActive ? 'w-5' : 'w-1.5 bg-slate-300 hover:bg-slate-400'
-                        }`}
-                        style={{
-                          backgroundColor: isActive ? svc.color : undefined,
-                        }}
-                        aria-label={`Show ${svc.title}`}
-                      />
-                    );
-                  })}
-                </div>
-              )}
 
               {/* ----------------------------------------------------------- */}
               {/* 6 CARDS: ROOTED DIRECTLY AT FOLDER MOUTH & FANNING OUT      */}
@@ -810,13 +754,39 @@ export default function Maintenance() {
                           <Sparkles className="w-3 h-3 text-[#FDE68A]" />
                           <span>{selectedCategory === 'elevator' ? 'ELEVATOR DOSSIER' : 'ESCALATOR DOSSIER'}</span>
                         </span>
-                        <span className="bg-white/10 px-2 py-0.5 rounded text-white/90 font-bold">
-                          {isMobile && revealedCount === 6
-                            ? `CARD ${activeMobileIdx + 1} OF 6`
-                            : revealedCount === 6 
-                              ? 'ALL 6 REVEALED' 
-                              : `${revealedCount}/6 ACTIVE`}
-                        </span>
+                        {isMobile && revealedCount > 0 ? (
+                          <div className="flex items-center gap-1 bg-black/60 border border-[#D49A3D]/70 px-2 py-0.5 rounded-full shadow-[0_0_10px_rgba(212,154,61,0.3)]">
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handlePrevMobileCard();
+                              }}
+                              className="w-5 h-5 flex items-center justify-center text-[#FDE68A] hover:text-white active:scale-75 transition-transform cursor-pointer"
+                              aria-label="Previous card"
+                            >
+                              <ChevronLeft className="w-3.5 h-3.5 stroke-[3]" />
+                            </button>
+                            <span className="font-mono font-bold tracking-wider text-[9px] text-[#FDE68A] px-1">
+                              {activeMobileIdx + 1} / {currentServices.length}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleNextMobileCard();
+                              }}
+                              className="w-5 h-5 flex items-center justify-center text-[#FDE68A] hover:text-white active:scale-75 transition-transform cursor-pointer"
+                              aria-label="Next card"
+                            >
+                              <ChevronRight className="w-3.5 h-3.5 stroke-[3]" />
+                            </button>
+                          </div>
+                        ) : (
+                          <span className="bg-white/10 px-2 py-0.5 rounded text-white/90 font-bold">
+                            {revealedCount === 6 ? 'ALL 6 REVEALED' : `${revealedCount}/6 ACTIVE`}
+                          </span>
+                        )}
                       </div>
 
                       {/* Center Brand Identity (Exact logo from reference image) */}
@@ -854,6 +824,67 @@ export default function Maintenance() {
                   </div>
                 </motion.div>
               </div>
+
+              {/* ----------------------------------------------------------- */}
+              {/* PROMINENT MOBILE NAVIGATION CHEVRONS (ALWAYS ON TOP LAYER)  */}
+              {/* ----------------------------------------------------------- */}
+              {isMobile && revealedCount > 0 && (
+                <>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePrevMobileCard();
+                    }}
+                    style={{ zIndex: 60 }}
+                    aria-label="Previous service"
+                    className="absolute left-1.5 sm:left-3 top-[38%] -translate-y-1/2 w-11 h-11 rounded-full bg-gradient-to-b from-[#1C2433] via-[#121722] to-[#0A0E17] border-2 border-[#D49A3D] text-[#FDE68A] shadow-[0_6px_22px_rgba(0,0,0,0.65),0_0_15px_rgba(212,154,61,0.55)] flex items-center justify-center active:scale-90 hover:scale-105 transition-all cursor-pointer pointer-events-auto"
+                  >
+                    <ChevronLeft className="w-6 h-6 stroke-[3] text-[#FDE68A] drop-shadow-[0_0_4px_rgba(253,230,138,0.8)]" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNextMobileCard();
+                    }}
+                    style={{ zIndex: 60 }}
+                    aria-label="Next service"
+                    className="absolute right-1.5 sm:right-3 top-[38%] -translate-y-1/2 w-11 h-11 rounded-full bg-gradient-to-b from-[#1C2433] via-[#121722] to-[#0A0E17] border-2 border-[#D49A3D] text-[#FDE68A] shadow-[0_6px_22px_rgba(0,0,0,0.65),0_0_15px_rgba(212,154,61,0.55)] flex items-center justify-center active:scale-90 hover:scale-105 transition-all cursor-pointer pointer-events-auto"
+                  >
+                    <ChevronRight className="w-6 h-6 stroke-[3] text-[#FDE68A] drop-shadow-[0_0_4px_rgba(253,230,138,0.8)]" />
+                  </button>
+
+                  {/* High-visibility Pagination Indicator Dots */}
+                  <div 
+                    style={{ zIndex: 60 }}
+                    className="absolute bottom-[138px] left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#121722]/90 backdrop-blur-md border border-[#D49A3D]/70 shadow-[0_4px_16px_rgba(0,0,0,0.45)] pointer-events-auto"
+                  >
+                    {currentServices.map((svc, i) => {
+                      const isActive = activeMobileIdx === i;
+                      return (
+                        <button
+                          key={svc.id}
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveMobileIdx(i);
+                          }}
+                          className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                            isActive ? 'w-6 shadow-[0_0_10px_currentColor]' : 'w-2 bg-white/40 hover:bg-white/70'
+                          }`}
+                          style={{
+                            backgroundColor: isActive ? svc.color : undefined,
+                            color: svc.color,
+                          }}
+                          aria-label={`Show ${svc.title}`}
+                        />
+                      );
+                    })}
+                  </div>
+                </>
+              )}
 
             </div>
           </motion.div>
