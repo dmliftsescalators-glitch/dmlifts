@@ -41,10 +41,6 @@ export default function Footer() {
             <p className="text-xs sm:text-sm text-[#C8D1D8]/80 max-w-sm leading-relaxed">
               Advanced vertical transportation and mobility engineering. Delivering reliable passenger elevators, freight lifts, escalators, and modernization solutions.
             </p>
-
-            <div className="pt-2 text-[11px] font-mono text-[#0A78B8]">
-              BROCHURE-INSPIRED ARCHITECTURAL EDITION
-            </div>
           </div>
 
           {/* NAVIGATION LINKS COLUMN (3 cols) */}
