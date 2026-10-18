@@ -108,7 +108,7 @@ export default function Footer() {
         {/* BOTTOM COPYRIGHT & SCROLL TO TOP */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#C8D1D8]/70">
           <div>
-            © {new Date().getFullYear()} DM Elevators. All rights reserved.
+            © {new Date().getFullYear()} DM Lifts &amp; Escalators. All rights reserved.
           </div>
           <div className="flex items-center gap-6">
             <span>ENGINEERED FOR MODERN SPACES</span>

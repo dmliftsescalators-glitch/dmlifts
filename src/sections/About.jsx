@@ -109,7 +109,7 @@ export default function About() {
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#B87C28] shadow-[0_0_8px_#B87C28]" />
               <span className="text-xs sm:text-sm font-sans font-semibold uppercase tracking-wider text-[#B87C28]">
-                About DM Elevators
+                About DM Lifts &amp; Escalators
               </span>
             </motion.div>
 
@@ -135,7 +135,7 @@ export default function About() {
               transition={{ duration: 0.55, delay: 0.15 }}
               className="text-base sm:text-lg text-[#475569] leading-relaxed max-w-2xl font-normal mb-8"
             >
-              <strong className="text-[#06111C] font-semibold">DM Elevators &amp; Escalators</strong> provides thoughtfully designed elevator and escalator solutions that combine modern technology, dependable performance, uncompromising safety, and refined architectural aesthetics.
+              <strong className="text-[#06111C] font-semibold">DM Lifts &amp; Escalators</strong> provides thoughtfully designed elevator and escalator solutions that combine modern technology, dependable performance, uncompromising safety, and refined architectural aesthetics.
             </motion.p>
 
             {/* 2x2 Feature Capability Grid */}
@@ -191,7 +191,7 @@ export default function About() {
                 <div className="relative rounded-[30px] sm:rounded-[38px] overflow-hidden aspect-[4/5] sm:aspect-[3/4] bg-[#0A1B2A] group">
                   <img
                     src={luxuryElevatorImg}
-                    alt="DM Elevators Luxury Panoramic Glass Elevator Atrium Installation"
+                    alt="DM Lifts &amp; Escalators Luxury Panoramic Glass Elevator Atrium Installation"
                     className="w-full h-full object-cover object-center transform transition-transform duration-700 ease-out group-hover:scale-105 filter contrast-[1.04]"
                     loading="eager"
                   />
@@ -212,7 +212,7 @@ export default function About() {
                 <div className="relative rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/3] bg-[#06111C]">
                   <img
                     src={escalatorAtriumImg}
-                    alt="DM Escalators Commercial Transit Installation"
+                    alt="DM Lifts &amp; Escalators Commercial Transit Installation"
                     className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-500"
                     loading="lazy"
                   />

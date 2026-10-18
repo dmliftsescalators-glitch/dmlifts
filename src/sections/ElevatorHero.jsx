@@ -184,7 +184,7 @@ export default function ElevatorHero({ onExplore }) {
                 <div className="relative rounded-[30px] sm:rounded-[38px] overflow-hidden aspect-[4/5] sm:aspect-[3/4] bg-[#0A1B2A] group">
                   <img
                     src={liftDoorsHd}
-                    alt="DM Elevators Luxury Modern Lift Entrance with Bronze Stainless Steel Doors and Digital Floor Indicator"
+                    alt="DM Lifts &amp; Escalators Luxury Modern Lift Entrance with Bronze Stainless Steel Doors and Digital Floor Indicator"
                     className="w-full h-full object-cover object-center transform transition-transform duration-700 ease-out group-hover:scale-105 filter contrast-[1.03]"
                     loading="eager"
                   />
@@ -205,7 +205,7 @@ export default function ElevatorHero({ onExplore }) {
                 <div className="relative rounded-xl sm:rounded-2xl overflow-hidden aspect-square bg-[#06111C]">
                   <img
                     src={cabinInteriorHd}
-                    alt="DM Elevators Luxury Gold Cabin Interior with Marble Flooring and Cove Downlights"
+                    alt="DM Lifts &amp; Escalators Luxury Gold Cabin Interior with Marble Flooring and Cove Downlights"
                     className="w-full h-full object-cover object-center group-hover:scale-106 transition-transform duration-500"
                     loading="lazy"
                   />

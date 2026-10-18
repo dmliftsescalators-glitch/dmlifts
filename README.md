@@ -1,4 +1,4 @@
-# DM Elevators & Escalators
+# DM Lifts & Escalators
 
 Premium vertical mobility engineering, architectural elevators, commercial escalators, and certified 24/7 AMC maintenance.
 

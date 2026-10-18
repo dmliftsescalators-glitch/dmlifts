@@ -144,7 +144,7 @@ export default function Technology() {
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                   <span>ALL SAFETY LOOPS ONLINE</span>
                 </div>
-                <span className="text-[#FF6A00]">DM-ELEVATORS ENGINEERING CORE</span>
+                <span className="text-[#FF6A00]">DM LIFTS &amp; ESCALATORS ENGINEERING CORE</span>
               </div>
             </div>
           </div>

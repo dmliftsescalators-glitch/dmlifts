@@ -160,7 +160,7 @@ export default function App() {
         {/* 01 HERO */}
         <Hero />
 
-        {/* 02 ABOUT DM ELEVATORS */}
+        {/* 02 ABOUT DM LIFTS & ESCALATORS */}
         <About />
 
         {/* 03 OUR SOLUTIONS & SPECIFICATIONS */}

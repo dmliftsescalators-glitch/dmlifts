@@ -77,7 +77,7 @@ export default function Contact() {
           body: JSON.stringify({
             access_key: accessKey,
             subject: `[New Inquiry] ${formData.requirement} - ${formData.name}`,
-            from_name: 'DM Elevators & Escalators Website',
+            from_name: 'DM Lifts & Escalators Website',
             name: formData.name.trim(),
             email: formData.email.trim(),
             phone: formData.phone.trim(),
