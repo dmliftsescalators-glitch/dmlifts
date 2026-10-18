@@ -4,7 +4,7 @@ import dmLogo from '../assets/dm-logo.png';
 import Escalators from '../sections/Escalators';
 import SlideCommit from '../components/SlideCommit';
 
-export default function EscalatorExplorePage({ onBack, backLabel = 'Back to Services' }) {
+export default function EscalatorExplorePage({ onBack, onContact, backLabel = 'Back to Home' }) {
   // Ensure explore page fits instantly at top without lag
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -16,19 +16,14 @@ export default function EscalatorExplorePage({ onBack, backLabel = 'Back to Serv
     if (onBack) {
       onBack();
     } else {
-      window.location.hash = '#services';
+      window.location.hash = '#home';
     }
   };
 
   const handleContactNavigate = (e) => {
     if (e) e.preventDefault();
-    if (onBack) {
-      onBack();
-      setTimeout(() => {
-        const el = document.getElementById('contact');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-        else window.location.hash = '#contact';
-      }, 120);
+    if (onContact) {
+      onContact();
     } else {
       window.location.hash = '#contact';
     }
@@ -137,7 +132,7 @@ export default function EscalatorExplorePage({ onBack, backLabel = 'Back to Serv
                 onClick={handleBackToHome}
                 className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/30 text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer"
               >
-                ← Back to Main Showcase
+                ← Back to Home
               </button>
               <SlideCommit
                 label="Slide to GET IN TOUCH"
@@ -145,13 +140,9 @@ export default function EscalatorExplorePage({ onBack, backLabel = 'Back to Serv
                 onConfirm={() => {
                   return new Promise((resolve) => {
                     setTimeout(() => {
-                      handleBackToHome();
-                      setTimeout(() => {
-                        const el = document.getElementById('contact');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }, 120);
+                      handleContactNavigate();
                       resolve();
-                    }, 650);
+                    }, 450);
                   });
                 }}
                 trackColor="#06111C"

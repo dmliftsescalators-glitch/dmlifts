@@ -74,6 +74,14 @@ export default function Navbar() {
               } else {
                 window.location.hash = item.href;
               }
+              if (targetId === 'home') {
+                if (window.lenis) {
+                  window.lenis.scrollTo(0);
+                } else {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+                return;
+              }
               const target = document.getElementById(targetId);
               if (target) {
                 if (window.lenis) {
@@ -94,8 +102,21 @@ export default function Navbar() {
           rightAction={
             <a
               href="#contact"
-              onClick={() => setActiveHref('#contact')}
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 text-xs font-bold tracking-wider uppercase rounded-full bg-[#FF6A00] text-white hover:bg-[#E55F00] transition-all duration-300 shadow-[0_0_20px_rgba(255,106,0,0.4)] hover:shadow-[0_0_25px_rgba(255,106,0,0.6)] active:scale-[0.98]"
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveHref('#contact');
+                window.location.hash = '#contact';
+                const target = document.getElementById('contact');
+                if (target) {
+                  if (window.lenis) {
+                    window.lenis.scrollTo(target, { offset: -70 });
+                  } else {
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                  }
+                }
+              }}
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 text-xs font-bold tracking-wider uppercase rounded-full bg-[#FF6A00] text-white hover:bg-[#E55F00] transition-all duration-300 shadow-[0_0_20px_rgba(255,106,0,0.4)] hover:shadow-[0_0_25px_rgba(255,106,0,0.6)] active:scale-[0.98] cursor-pointer"
             >
               <span>GET IN TOUCH</span>
               <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />

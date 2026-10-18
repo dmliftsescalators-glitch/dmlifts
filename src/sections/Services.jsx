@@ -111,7 +111,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative scroll-mt-16 lg:scroll-mt-20 py-6 sm:py-10 lg:py-14 bg-[#FBFBFA] text-[#06111C] overflow-hidden selection:bg-[#D49A3D]/20 selection:text-[#06111C]"
+      className="relative py-6 sm:py-10 lg:py-14 bg-[#FBFBFA] text-[#06111C] overflow-hidden selection:bg-[#D49A3D]/20 selection:text-[#06111C]"
     >
       {/* Ambient Architectural Watermark Grid & Soft Sun Glow */}
       <div className="absolute inset-0 pointer-events-none">

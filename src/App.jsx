@@ -139,7 +139,16 @@ export default function App() {
   const navigateToHome = () => {
     setCurrentPage('home');
     window.location.hash = '#home';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    window.lenis?.scrollTo(0, { immediate: true });
+  };
+
+  const navigateToContact = () => {
+    setCurrentPage('home');
+    window.location.hash = '#contact';
+    setTimeout(() => {
+      scrollToTargetSection('contact');
+    }, 120);
   };
 
   // Dedicated full-page views
@@ -147,6 +156,7 @@ export default function App() {
     return (
       <ServicesPage
         onBack={navigateToHome}
+        onContact={navigateToContact}
         onNavigate={(exploreId) => {
           if (exploreId === 'elevator-explore') navigateToElevators();
           else if (exploreId === 'escalator-explore') navigateToEscalators();
@@ -157,23 +167,23 @@ export default function App() {
   }
 
   if (currentPage === 'elevator-explore') {
-    return <ElevatorExplorePage onBack={navigateToServices} backLabel="Back to Services" />;
+    return <ElevatorExplorePage onBack={navigateToHome} onContact={navigateToContact} backLabel="Back to Home" />;
   }
 
   if (currentPage === 'escalator-explore') {
-    return <EscalatorExplorePage onBack={navigateToServices} backLabel="Back to Services" />;
+    return <EscalatorExplorePage onBack={navigateToHome} onContact={navigateToContact} backLabel="Back to Home" />;
   }
 
   if (currentPage === 'installation-explore') {
-    return <InstallationExplorePage onBack={navigateToServices} backLabel="Back to Services" />;
+    return <InstallationExplorePage onBack={navigateToHome} onContact={navigateToContact} backLabel="Back to Home" />;
   }
 
   if (currentPage === 'modernization-explore') {
-    return <ModernizationExplorePage onBack={navigateToServices} backLabel="Back to Services" />;
+    return <ModernizationExplorePage onBack={navigateToHome} onContact={navigateToContact} backLabel="Back to Home" />;
   }
 
   if (currentPage === 'maintenance-explore') {
-    return <MaintenancePage onBack={navigateToServices} backLabel="Back to Services" />;
+    return <MaintenancePage onBack={navigateToHome} onContact={navigateToContact} backLabel="Back to Home" />;
   }
 
   return (

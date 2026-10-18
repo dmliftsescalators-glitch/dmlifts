@@ -72,7 +72,7 @@ const SERVICES = [
   }
 ];
 
-export default function ServicesPage({ onBack, onNavigate }) {
+export default function ServicesPage({ onBack, onNavigate, onContact }) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     window.lenis?.scrollTo(0, { immediate: true });
@@ -97,13 +97,8 @@ export default function ServicesPage({ onBack, onNavigate }) {
 
   const handleContactNavigate = (e) => {
     if (e) e.preventDefault();
-    if (onBack) {
-      onBack();
-      setTimeout(() => {
-        const el = document.getElementById('contact');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-        else window.location.hash = '#contact';
-      }, 120);
+    if (onContact) {
+      onContact();
     } else {
       window.location.hash = '#contact';
     }

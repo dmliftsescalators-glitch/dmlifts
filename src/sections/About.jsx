@@ -74,7 +74,7 @@ export default function About() {
   return (
     <section 
       id="about" 
-      className="relative scroll-mt-20 lg:scroll-mt-24 py-8 sm:py-16 lg:py-24 bg-[#FBFBFA] text-[#06111C] overflow-hidden selection:bg-[#D49A3D]/20 selection:text-[#06111C]"
+      className="relative py-8 sm:py-16 lg:py-24 bg-[#FBFBFA] text-[#06111C] overflow-hidden selection:bg-[#D49A3D]/20 selection:text-[#06111C]"
     >
       {/* Ambient Architectural Watermark Grid & Soft Sun Glow */}
       <div className="absolute inset-0 pointer-events-none">

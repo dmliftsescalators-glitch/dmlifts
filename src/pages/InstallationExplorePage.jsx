@@ -85,7 +85,7 @@ const PROCESS_STEPS = [
   }
 ];
 
-export default function InstallationExplorePage({ onBack, backLabel = 'Back to Services' }) {
+export default function InstallationExplorePage({ onBack, onContact, backLabel = 'Back to Home' }) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     window.lenis?.scrollTo(0, { immediate: true });
@@ -96,19 +96,14 @@ export default function InstallationExplorePage({ onBack, backLabel = 'Back to S
     if (onBack) {
       onBack();
     } else {
-      window.location.hash = '#services';
+      window.location.hash = '#home';
     }
   };
 
   const handleContactNavigate = (e) => {
     if (e) e.preventDefault();
-    if (onBack) {
-      onBack();
-      setTimeout(() => {
-        const el = document.getElementById('contact');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-        else window.location.hash = '#contact';
-      }, 100);
+    if (onContact) {
+      onContact();
     } else {
       window.location.hash = '#contact';
     }
@@ -124,7 +119,7 @@ export default function InstallationExplorePage({ onBack, backLabel = 'Back to S
           <button
             onClick={handleBack}
             className="group inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#0A1B2A] border border-[#075A8F]/40 text-[#C8D1D8] hover:text-white hover:border-[#D49A3D] hover:bg-[#06111C] transition-all duration-200 text-xs font-semibold tracking-wider uppercase shadow-sm cursor-pointer"
-            aria-label="Back to Services"
+            aria-label="Back to Home"
           >
             <ArrowLeft className="w-4 h-4 text-[#D49A3D] transition-transform group-hover:-translate-x-1" />
             <span>{backLabel}</span>
@@ -133,7 +128,7 @@ export default function InstallationExplorePage({ onBack, backLabel = 'Back to S
           <a
             href="#home"
             onClick={handleBack}
-            className="bg-white/95 px-3 py-1.5 rounded-xl border border-white/40 shadow-sm flex items-center justify-center hover:scale-105 transition-transform"
+            className="bg-white/95 px-3 py-1.5 rounded-xl border border-white/40 shadow-sm flex items-center justify-center hover:scale-105 transition-transform cursor-pointer"
           >
             <img src={dmLogo} alt="DM Lifts & Escalators" className="h-8 w-auto object-contain" />
           </a>

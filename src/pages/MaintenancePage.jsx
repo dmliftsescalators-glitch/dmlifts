@@ -4,7 +4,7 @@ import dmLogo from '../assets/dm-logo.png';
 import Maintenance from '../sections/Maintenance';
 import SlideCommit from '../components/SlideCommit';
 
-export default function MaintenancePage({ onBack, backLabel = 'Back to Services' }) {
+export default function MaintenancePage({ onBack, onContact, backLabel = 'Back to Home' }) {
   // Ensure explore page fits instantly at top without lag
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -16,7 +16,16 @@ export default function MaintenancePage({ onBack, backLabel = 'Back to Services'
     if (onBack) {
       onBack();
     } else {
-      window.location.hash = '#services';
+      window.location.hash = '#home';
+    }
+  };
+
+  const handleContactNavigate = (e) => {
+    if (e) e.preventDefault();
+    if (onContact) {
+      onContact();
+    } else {
+      window.location.hash = '#contact';
     }
   };
 
@@ -28,7 +37,7 @@ export default function MaintenancePage({ onBack, backLabel = 'Back to Services'
           <button
             onClick={handleBackToHome}
             className="group inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#0A1B2A] border border-[#075A8F]/40 text-[#C8D1D8] hover:text-white hover:border-[#D49A3D] hover:bg-[#06111C] transition-all duration-200 text-xs font-semibold tracking-wider uppercase shadow-sm cursor-pointer"
-            aria-label="Back to Services"
+            aria-label="Back to Home"
           >
             <ArrowLeft className="w-4 h-4 text-[#D49A3D] transition-transform group-hover:-translate-x-1" />
             <span>{backLabel}</span>
@@ -37,15 +46,15 @@ export default function MaintenancePage({ onBack, backLabel = 'Back to Services'
           <a
             href="#home"
             onClick={handleBackToHome}
-            className="bg-white/95 px-3 py-1.5 rounded-xl border border-white/40 shadow-sm flex items-center justify-center hover:scale-105 transition-transform"
+            className="bg-white/95 px-3 py-1.5 rounded-xl border border-white/40 shadow-sm flex items-center justify-center hover:scale-105 transition-transform cursor-pointer"
           >
             <img src={dmLogo} alt="DM Lifts & Escalators" className="h-8 w-auto object-contain" />
           </a>
 
           <a
             href="#contact"
-            onClick={handleBackToHome}
-            className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2 text-xs font-bold tracking-wider uppercase rounded-full bg-[#06111C] border border-[#D49A3D]/50 text-white hover:bg-[#0A1B2A] transition-all shadow-[0_0_20px_rgba(212,154,61,0.2)] active:scale-95"
+            onClick={handleContactNavigate}
+            className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2 text-xs font-bold tracking-wider uppercase rounded-full bg-[#06111C] border border-[#D49A3D]/50 text-white hover:bg-[#0A1B2A] transition-all shadow-[0_0_20px_rgba(212,154,61,0.2)] active:scale-95 cursor-pointer"
           >
             <span>GET IN TOUCH</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-[#D49A3D] stroke-[2.5]" />
@@ -81,13 +90,9 @@ export default function MaintenancePage({ onBack, backLabel = 'Back to Services'
                 onConfirm={() => {
                   return new Promise((resolve) => {
                     setTimeout(() => {
-                      handleBackToHome();
-                      setTimeout(() => {
-                        const el = document.getElementById('contact');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }, 120);
+                      handleContactNavigate();
                       resolve();
-                    }, 650);
+                    }, 450);
                   });
                 }}
                 trackColor="#06111C"

@@ -134,7 +134,7 @@ export default function Solutions() {
   return (
     <section 
       id="solutions" 
-      className="scroll-mt-20 lg:scroll-mt-24 py-8 sm:py-16 lg:py-24 bg-[#06111C] border-t border-[#075A8F]/25 relative overflow-hidden"
+      className="py-8 sm:py-16 lg:py-24 bg-[#06111C] border-t border-[#075A8F]/25 relative overflow-hidden"
     >
 
       {/* Background ambient lighting */}

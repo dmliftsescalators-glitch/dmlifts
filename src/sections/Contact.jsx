@@ -137,7 +137,7 @@ export default function Contact() {
   return (
     <section 
       id="contact" 
-      className="scroll-mt-20 lg:scroll-mt-24 py-8 sm:py-16 lg:py-24 bg-[#06111C] border-t border-[#075A8F]/20 relative overflow-hidden"
+      className="py-8 sm:py-16 lg:py-24 bg-[#06111C] border-t border-[#075A8F]/20 relative overflow-hidden"
     >
       {/* Background ambient lighting */}
       <div className="absolute top-1/3 left-10 w-[500px] h-[500px] bg-[#075A8F]/15 rounded-full blur-[170px] pointer-events-none" />
