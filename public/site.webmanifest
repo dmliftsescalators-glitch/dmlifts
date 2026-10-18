@@ -1,0 +1,21 @@
+{
+  "name": "DM Lifts & Escalators",
+  "short_name": "DM Lifts",
+  "description": "High-performance passenger elevators, commercial escalators, modernizations, and certified 24/7 AMC maintenance.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06111C",
+  "theme_color": "#06111C",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
