@@ -5,9 +5,10 @@ import ElevatorOptions from '../sections/ElevatorOptions';
 import SlideCommit from '../components/SlideCommit';
 
 export default function ElevatorExplorePage({ onBack, backLabel = 'Back to Services' }) {
-  // Ensure we scroll to top when opening the explore page
+  // Ensure explore page fits instantly at top without lag
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    window.lenis?.scrollTo(0, { immediate: true });
   }, []);
 
   const handleBackToHome = (e) => {

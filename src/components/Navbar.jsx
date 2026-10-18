@@ -68,14 +68,20 @@ export default function Navbar() {
           onItemClick={(item) => {
             setActiveHref(item.href);
             if (item.href?.startsWith('#')) {
+              const targetId = item.href.substring(1);
               if (window.location.hash === item.href) {
                 window.dispatchEvent(new HashChangeEvent('hashchange'));
               } else {
                 window.location.hash = item.href;
               }
-              const target = document.getElementById(item.href.substring(1));
+              const target = document.getElementById(targetId);
               if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
+                if (window.lenis) {
+                  window.lenis.scrollTo(target, { offset: -70 });
+                } else {
+                  const top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+                  window.scrollTo({ top, behavior: 'smooth' });
+                }
               }
             }
           }}

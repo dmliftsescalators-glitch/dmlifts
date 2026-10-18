@@ -5,8 +5,10 @@ import Maintenance from '../sections/Maintenance';
 import SlideCommit from '../components/SlideCommit';
 
 export default function MaintenancePage({ onBack, backLabel = 'Back to Services' }) {
+  // Ensure explore page fits instantly at top without lag
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    window.lenis?.scrollTo(0, { immediate: true });
   }, []);
 
   const handleBackToHome = (e) => {

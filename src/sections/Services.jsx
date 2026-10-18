@@ -86,6 +86,8 @@ export default function Services() {
   const handleNavigate = (hash) => {
     window.location.hash = hash;
     window.dispatchEvent(new HashChangeEvent('hashchange'));
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    window.lenis?.scrollTo(0, { immediate: true });
   };
 
   const handleCardClick = (idx, hash) => {
@@ -109,7 +111,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative scroll-mt-20 lg:scroll-mt-24 py-8 sm:py-16 lg:py-24 bg-[#FBFBFA] text-[#06111C] overflow-hidden selection:bg-[#D49A3D]/20 selection:text-[#06111C]"
+      className="relative scroll-mt-16 lg:scroll-mt-20 py-6 sm:py-10 lg:py-14 bg-[#FBFBFA] text-[#06111C] overflow-hidden selection:bg-[#D49A3D]/20 selection:text-[#06111C]"
     >
       {/* Ambient Architectural Watermark Grid & Soft Sun Glow */}
       <div className="absolute inset-0 pointer-events-none">
@@ -134,7 +136,7 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 sm:gap-6 mb-4 pb-3 sm:mb-12 sm:pb-8 border-b border-[#E2E8F0]"
+          className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 sm:gap-6 mb-4 pb-3 sm:mb-8 sm:pb-5 border-b border-[#E2E8F0]"
         >
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B87C28]/10 border border-[#B87C28]/25 mb-3">
@@ -253,7 +255,7 @@ export default function Services() {
         {/* ========================================================= */}
         {/* 2B. TABLET & DESKTOP 5-COLUMN ACCORDION                   */}
         {/* ========================================================= */}
-        <div className="hidden sm:flex flex-row gap-2 md:gap-3 xl:gap-5 h-[500px] md:h-[540px] xl:h-[580px] w-full overflow-hidden select-none">
+        <div className="hidden sm:flex flex-row gap-2 md:gap-3 xl:gap-5 h-[460px] md:h-[500px] xl:h-[540px] w-full overflow-hidden select-none">
           {SERVICES.map((service, idx) => {
             const isExpanded = activeIndex === idx;
             const Icon = service.icon;

@@ -76,6 +76,7 @@ const SOLUTIONS = [
 export default function ModernizationExplorePage({ onBack, backLabel = 'Back to Services' }) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+    window.lenis?.scrollTo(0, { immediate: true });
   }, []);
 
   const handleBack = (e) => {

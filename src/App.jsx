@@ -28,6 +28,8 @@ export default function App() {
       wheelMultiplier: 0.9,
     });
 
+    window.lenis = lenis;
+
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -38,8 +40,21 @@ export default function App() {
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      delete window.lenis;
     };
   }, []);
+
+  // Helper for scrolling smoothly to any section with proper fixed-navbar offset
+  const scrollToTargetSection = (targetId) => {
+    const el = document.getElementById(targetId);
+    if (!el) return;
+    if (window.lenis) {
+      window.lenis.scrollTo(el, { offset: -70 });
+    } else {
+      const top = el.getBoundingClientRect().top + window.pageYOffset - 70;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
 
   // Sync state with URL hash for browser history, direct links, and Back/Forward buttons
   useEffect(() => {
@@ -48,30 +63,43 @@ export default function App() {
       if (hash === '#services') {
         setCurrentPage('home');
         setTimeout(() => {
-          const el = document.getElementById('services');
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 80);
+          scrollToTargetSection('services');
+        }, 120);
       } else if (hash === '#solutions') {
         setCurrentPage('home');
         setTimeout(() => {
-          const el = document.getElementById('solutions');
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 80);
+          scrollToTargetSection('solutions');
+        }, 120);
+      } else if (hash === '#about') {
+        setCurrentPage('home');
+        setTimeout(() => {
+          scrollToTargetSection('about');
+        }, 120);
+      } else if (hash === '#contact') {
+        setCurrentPage('home');
+        setTimeout(() => {
+          scrollToTargetSection('contact');
+        }, 120);
       } else if (hash === '#elevators-explore' || hash === '#explore-elevators' || hash === '#elevators') {
         setCurrentPage('elevator-explore');
         window.scrollTo({ top: 0, behavior: 'instant' });
+        window.lenis?.scrollTo(0, { immediate: true });
       } else if (hash === '#escalators-explore' || hash === '#explore-escalators' || hash === '#escalators') {
         setCurrentPage('escalator-explore');
         window.scrollTo({ top: 0, behavior: 'instant' });
+        window.lenis?.scrollTo(0, { immediate: true });
       } else if (hash === '#installation-explore' || hash === '#explore-installation' || hash === '#installation') {
         setCurrentPage('installation-explore');
         window.scrollTo({ top: 0, behavior: 'instant' });
+        window.lenis?.scrollTo(0, { immediate: true });
       } else if (hash === '#modernization-explore' || hash === '#explore-modernization' || hash === '#modernization') {
         setCurrentPage('modernization-explore');
         window.scrollTo({ top: 0, behavior: 'instant' });
+        window.lenis?.scrollTo(0, { immediate: true });
       } else if (hash === '#maintenance-explore' || hash === '#explore-maintenance' || hash === '#maintenance') {
         setCurrentPage('maintenance-explore');
         window.scrollTo({ top: 0, behavior: 'instant' });
+        window.lenis?.scrollTo(0, { immediate: true });
       } else {
         setCurrentPage('home');
       }
@@ -86,10 +114,8 @@ export default function App() {
     setCurrentPage('home');
     window.location.hash = '#services';
     setTimeout(() => {
-      const el = document.getElementById('services');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-      else window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 80);
+      scrollToTargetSection('services');
+    }, 120);
   };
 
   const navigateToElevators = () => {

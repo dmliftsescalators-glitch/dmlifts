@@ -75,6 +75,7 @@ const SERVICES = [
 export default function ServicesPage({ onBack, onNavigate }) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+    window.lenis?.scrollTo(0, { immediate: true });
   }, []);
 
   const handleBackToHome = (e) => {

@@ -190,6 +190,21 @@ export default function Hero() {
             {/* Primary Button */}
             <PillButton
               href="#services"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById('services');
+                if (el) {
+                  if (window.lenis) {
+                    window.lenis.scrollTo(el, { offset: -70 });
+                  } else {
+                    const top = el.getBoundingClientRect().top + window.pageYOffset - 70;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                  }
+                }
+                if (window.location.hash !== '#services') {
+                  history.pushState(null, '', '#services');
+                }
+              }}
               baseBg="#FF6A00"
               circleBg="#FFFFFF"
               textColor="#FFFFFF"

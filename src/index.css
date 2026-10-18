@@ -6,6 +6,10 @@
   color-scheme: dark;
 }
 
+html {
+  scroll-padding-top: 5rem; /* Navbar offset for all anchor navigation */
+}
+
 /* Custom Scrollbar - Deep Navy & DM Blue with subtle Orange hover */
 ::-webkit-scrollbar {
   width: 6px;
