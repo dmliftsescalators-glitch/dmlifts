@@ -1,6 +1,6 @@
 # SEO Optimization Mapping & Google Search Console Blueprint
 **Company:** DM Lifts & Escalators  
-**Canonical Domain:** `https://dmelevators.com`  
+**Canonical Domain:** `https://dmliftsandesclators.com`  
 **Target Region:** Bengaluru, Karnataka & Pan-India  
 **Primary Industry:** Vertical Mobility Engineering (Elevators, Escalators, Modernization, 24/7 AMC Maintenance)
 
@@ -12,8 +12,8 @@
 1. Navigate to [Google Search Console](https://search.google.com/search-console).
 2. Click **Add Property** in the top-left dropdown.
 3. You will be prompted with two choices:
-   - **Domain Property (Recommended):** Enter `dmelevators.com`. Covers all subdomains (`www`, non-www, `http`, `https`).
-   - **URL Prefix Property:** Enter `https://dmelevators.com/`.
+   - **Domain Property (Recommended):** Enter `dmliftsandesclators.com`. Covers all subdomains (`www`, non-www, `http`, `https`).
+   - **URL Prefix Property:** Enter `https://dmliftsandesclators.com/`.
 
 ---
 
@@ -27,7 +27,7 @@ In [index.html](file:///c:/Users/gowda/OneDrive/Desktop/DM/index.html#L17), a ve
 * **Action:** When GSC generates your verification string (e.g. `google-site-verification=abc123xyz...`), replace `ENTER_YOUR_GOOGLE_SEARCH_CONSOLE_CODE_HERE` with the token, push/deploy, and click **Verify** in GSC.
 
 #### Method B: DNS TXT Record (Best for Hostinger Domain Management)
-1. In Hostinger hPanel, go to **Domains** &rarr; `dmelevators.com` &rarr; **DNS / Nameservers**.
+1. In Hostinger hPanel, go to **Domains** &rarr; `dmliftsandesclators.com` &rarr; **DNS / Nameservers**.
 2. Add a new **TXT Record**:
    - **Type:** `TXT`
    - **Name:** `@`
@@ -36,7 +36,7 @@ In [index.html](file:///c:/Users/gowda/OneDrive/Desktop/DM/index.html#L17), a ve
 3. Click **Add Record** and hit **Verify** in GSC.
 
 #### Method C: Google HTML Verification File
-If you select the HTML File method in GSC (e.g. `google123456789.html`), simply download the file and save it in the [public/](file:///c:/Users/gowda/OneDrive/Desktop/DM/public) directory. It will be served at `https://dmelevators.com/google123456789.html`.
+If you select the HTML File method in GSC (e.g. `google123456789.html`), simply download the file and save it in the [public/](file:///c:/Users/gowda/OneDrive/Desktop/DM/public) directory. It will be served at `https://dmliftsandesclators.com/google123456789.html`.
 
 ---
 
@@ -55,7 +55,7 @@ If you select the HTML File method in GSC (e.g. `google123456789.html`), simply 
    ```text
    sitemap.xml
    ```
-   (Full URL: `https://dmelevators.com/sitemap.xml`)
+   (Full URL: `https://dmliftsandesclators.com/sitemap.xml`)
 3. Click **Submit**. Status will show **Success**.
 
 ---
@@ -90,7 +90,7 @@ The website includes Schema.org markup in `index.html` configured for Google Ric
 
 ### Testing Structured Data
 1. Visit [Google Rich Results Test](https://search.google.com/test/rich-results).
-2. Enter `https://dmelevators.com/` or paste code from `index.html`.
+2. Enter `https://dmliftsandesclators.com/` or paste code from `index.html`.
 3. Verify that zero errors and zero warnings are returned.
 
 ---
@@ -99,12 +99,12 @@ The website includes Schema.org markup in `index.html` configured for Google Ric
 
 ### Days 1–14: Indexing & Inspection
 - **Inspect Top URLs:** In GSC's top search bar, enter each key URL:
-  - `https://dmelevators.com/`
-  - `https://dmelevators.com/elevators`
-  - `https://dmelevators.com/escalators`
-  - `https://dmelevators.com/maintenance`
-  - `https://dmelevators.com/installation`
-  - `https://dmelevators.com/modernization`
+  - `https://dmliftsandesclators.com/`
+  - `https://dmliftsandesclators.com/elevators`
+  - `https://dmliftsandesclators.com/escalators`
+  - `https://dmliftsandesclators.com/maintenance`
+  - `https://dmliftsandesclators.com/installation`
+  - `https://dmliftsandesclators.com/modernization`
 - Click **Request Indexing** for each priority URL.
 - Check the **Page Indexing** report to confirm pages transition from *Discovered - currently not indexed* to *Crawled - currently indexed*.
 
