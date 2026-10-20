@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dmelevators.com/sitemap.xml
+Sitemap: https://dmliftsandesclators.com/sitemap.xml

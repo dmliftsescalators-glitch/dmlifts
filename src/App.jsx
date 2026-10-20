@@ -14,6 +14,8 @@ import MaintenancePage from './pages/MaintenancePage';
 import InstallationExplorePage from './pages/InstallationExplorePage';
 import ModernizationExplorePage from './pages/ModernizationExplorePage';
 
+import { applySEO } from './utils/seoHelper';
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
@@ -44,6 +46,11 @@ export default function App() {
     };
   }, []);
 
+  // Update document title, canonical URL, and meta tags for Google Search Console & SEO
+  useEffect(() => {
+    applySEO(currentPage);
+  }, [currentPage]);
+
   // Helper for scrolling smoothly to any section with proper fixed-navbar offset
   const scrollToTargetSection = (targetId) => {
     const el = document.getElementById(targetId);
@@ -56,62 +63,72 @@ export default function App() {
     }
   };
 
-  // Sync state with URL hash for browser history, direct links, and Back/Forward buttons
+  // Sync state with URL pathname & hash for Google Search Console indexing, direct links, and browser history
   useEffect(() => {
-    const checkHash = () => {
-      const hash = window.location.hash;
-      if (hash === '#services') {
+    const checkRoute = () => {
+      const hash = window.location.hash.toLowerCase();
+      const rawPath = window.location.pathname.toLowerCase().replace(/\/$/, '');
+      const path = rawPath.startsWith('/') ? rawPath : `/${rawPath}`;
+
+      if (path === '/elevators' || hash === '#elevators-explore' || hash === '#explore-elevators' || hash === '#elevators') {
+        setCurrentPage('elevator-explore');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        window.lenis?.scrollTo(0, { immediate: true });
+      } else if (path === '/escalators' || hash === '#escalators-explore' || hash === '#explore-escalators' || hash === '#escalators') {
+        setCurrentPage('escalator-explore');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        window.lenis?.scrollTo(0, { immediate: true });
+      } else if (path === '/installation' || hash === '#installation-explore' || hash === '#explore-installation' || hash === '#installation') {
+        setCurrentPage('installation-explore');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        window.lenis?.scrollTo(0, { immediate: true });
+      } else if (path === '/modernization' || hash === '#modernization-explore' || hash === '#explore-modernization' || hash === '#modernization') {
+        setCurrentPage('modernization-explore');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        window.lenis?.scrollTo(0, { immediate: true });
+      } else if (path === '/maintenance' || hash === '#maintenance-explore' || hash === '#explore-maintenance' || hash === '#maintenance') {
+        setCurrentPage('maintenance-explore');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        window.lenis?.scrollTo(0, { immediate: true });
+      } else if (path === '/services' || hash === '#services') {
         setCurrentPage('home');
         setTimeout(() => {
           scrollToTargetSection('services');
         }, 120);
-      } else if (hash === '#solutions') {
+      } else if (path === '/solutions' || hash === '#solutions') {
         setCurrentPage('home');
         setTimeout(() => {
           scrollToTargetSection('solutions');
         }, 120);
-      } else if (hash === '#about') {
+      } else if (path === '/about' || hash === '#about') {
         setCurrentPage('home');
         setTimeout(() => {
           scrollToTargetSection('about');
         }, 120);
-      } else if (hash === '#contact') {
+      } else if (path === '/contact' || hash === '#contact') {
         setCurrentPage('home');
         setTimeout(() => {
           scrollToTargetSection('contact');
         }, 120);
-      } else if (hash === '#elevators-explore' || hash === '#explore-elevators' || hash === '#elevators') {
-        setCurrentPage('elevator-explore');
-        window.scrollTo({ top: 0, behavior: 'instant' });
-        window.lenis?.scrollTo(0, { immediate: true });
-      } else if (hash === '#escalators-explore' || hash === '#explore-escalators' || hash === '#escalators') {
-        setCurrentPage('escalator-explore');
-        window.scrollTo({ top: 0, behavior: 'instant' });
-        window.lenis?.scrollTo(0, { immediate: true });
-      } else if (hash === '#installation-explore' || hash === '#explore-installation' || hash === '#installation') {
-        setCurrentPage('installation-explore');
-        window.scrollTo({ top: 0, behavior: 'instant' });
-        window.lenis?.scrollTo(0, { immediate: true });
-      } else if (hash === '#modernization-explore' || hash === '#explore-modernization' || hash === '#modernization') {
-        setCurrentPage('modernization-explore');
-        window.scrollTo({ top: 0, behavior: 'instant' });
-        window.lenis?.scrollTo(0, { immediate: true });
-      } else if (hash === '#maintenance-explore' || hash === '#explore-maintenance' || hash === '#maintenance') {
-        setCurrentPage('maintenance-explore');
-        window.scrollTo({ top: 0, behavior: 'instant' });
-        window.lenis?.scrollTo(0, { immediate: true });
       } else {
         setCurrentPage('home');
       }
     };
 
-    checkHash();
-    window.addEventListener('hashchange', checkHash);
-    return () => window.removeEventListener('hashchange', checkHash);
+    checkRoute();
+    window.addEventListener('hashchange', checkRoute);
+    window.addEventListener('popstate', checkRoute);
+    return () => {
+      window.removeEventListener('hashchange', checkRoute);
+      window.removeEventListener('popstate', checkRoute);
+    };
   }, []);
 
   const navigateToServices = () => {
     setCurrentPage('home');
+    if (window.history.pushState) {
+      window.history.pushState(null, '', '/services');
+    }
     window.location.hash = '#services';
     setTimeout(() => {
       scrollToTargetSection('services');
@@ -120,24 +137,54 @@ export default function App() {
 
   const navigateToElevators = () => {
     setCurrentPage('elevator-explore');
+    if (window.history.pushState) {
+      window.history.pushState(null, '', '/elevators');
+    }
     window.location.hash = '#elevators-explore';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const navigateToEscalators = () => {
     setCurrentPage('escalator-explore');
+    if (window.history.pushState) {
+      window.history.pushState(null, '', '/escalators');
+    }
     window.location.hash = '#escalators-explore';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navigateToInstallation = () => {
+    setCurrentPage('installation-explore');
+    if (window.history.pushState) {
+      window.history.pushState(null, '', '/installation');
+    }
+    window.location.hash = '#installation-explore';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navigateToModernization = () => {
+    setCurrentPage('modernization-explore');
+    if (window.history.pushState) {
+      window.history.pushState(null, '', '/modernization');
+    }
+    window.location.hash = '#modernization-explore';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const navigateToMaintenance = () => {
     setCurrentPage('maintenance-explore');
+    if (window.history.pushState) {
+      window.history.pushState(null, '', '/maintenance');
+    }
     window.location.hash = '#maintenance-explore';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const navigateToHome = () => {
     setCurrentPage('home');
+    if (window.history.pushState) {
+      window.history.pushState(null, '', '/');
+    }
     window.location.hash = '#home';
     window.scrollTo({ top: 0, behavior: 'instant' });
     window.lenis?.scrollTo(0, { immediate: true });
@@ -145,6 +192,9 @@ export default function App() {
 
   const navigateToContact = () => {
     setCurrentPage('home');
+    if (window.history.pushState) {
+      window.history.pushState(null, '', '/contact');
+    }
     window.location.hash = '#contact';
     setTimeout(() => {
       scrollToTargetSection('contact');
@@ -161,6 +211,8 @@ export default function App() {
           if (exploreId === 'elevator-explore') navigateToElevators();
           else if (exploreId === 'escalator-explore') navigateToEscalators();
           else if (exploreId === 'maintenance-explore') navigateToMaintenance();
+          else if (exploreId === 'installation-explore') navigateToInstallation();
+          else if (exploreId === 'modernization-explore') navigateToModernization();
         }}
       />
     );

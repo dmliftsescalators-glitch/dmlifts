@@ -1,50 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
   <url>
-    <loc>https://dmelevators.com/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <loc>https://dmliftsandesclators.com/</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Elevators Division & Products -->
   <url>
-    <loc>https://dmelevators.com/#about</loc>
-    <lastmod>2026-10-17</lastmod>
+    <loc>https://dmliftsandesclators.com/elevators</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Commercial Escalators & Moving Walkways -->
+  <url>
+    <loc>https://dmliftsandesclators.com/escalators</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Turnkey Installation Engineering -->
+  <url>
+    <loc>https://dmliftsandesclators.com/installation</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Modernization & Retrofitting -->
+  <url>
+    <loc>https://dmliftsandesclators.com/modernization</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 24/7 AMC Maintenance & Spares -->
+  <url>
+    <loc>https://dmliftsandesclators.com/maintenance</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Full Services Overview -->
+  <url>
+    <loc>https://dmliftsandesclators.com/services</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About Company & Engineering Heritage -->
+  <url>
+    <loc>https://dmliftsandesclators.com/about</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Technical Solutions & Specifications -->
   <url>
-    <loc>https://dmelevators.com/#solutions</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://dmelevators.com/#services</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://dmelevators.com/#elevators-explore</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://dmelevators.com/#escalators-explore</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://dmelevators.com/#maintenance-explore</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://dmliftsandesclators.com/solutions</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Contact & Request Engineering Quote -->
   <url>
-    <loc>https://dmelevators.com/#contact</loc>
-    <lastmod>2026-10-17</lastmod>
+    <loc>https://dmliftsandesclators.com/contact</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
